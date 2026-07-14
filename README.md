@@ -6,34 +6,16 @@ Readme added for viewing convinience.
 
 ### Sitemap Sketch
 
+![](sitemap.png)
 
-#### Home
+### Project Config
 
-![](sitemap/Home.png)
+![](config.jpeg)
 
-#### Skills
-
-![](sitemap/Skills.png)
-
-#### Projects
-
-![](sitemap/Projects.png)
-
-#### Education
-
-![](sitemap/Education.png)
-
-#### Footer
-
-![](sitemap/Footer.png)
-
-### Claude Project Screenshots
-
-#### Custom Prompt
+### Prompt
 
 ![](prompt.jpeg)
 
-#### Claude Response
+### Claude's Response
 
 ![](response.jpeg)
-
