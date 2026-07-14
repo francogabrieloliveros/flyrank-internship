@@ -18,7 +18,7 @@ Readme added for viewing convinience. [Project Link](https://claude.ai/share/207
 | 8   | Replying to emails                      | Delegate with review | AI gives me a fast draft, but I still check tone and context myself                                                               |
 | 9   | Writing boilerplate code                | Fully automate       | It's repetitive and rule-based, so my tests catch any issues anyway                                                               |
 | 10  | Learning to code in unfamiliar language | Collaborate with AI  | I learn better through interactive Q&A than by reading static docs alone                                                          |
-| 11  | Finishing assignments                   | Collaborate with AI  | I usually send Claude the instructions, ask for guidance, do the assigment myself, then crosscheck with Claude for quality        |
+| 11  | Finishing assignments (general)                   | Just me  | The whole point of an assignment is my own demonstrated learning        |
 | 12  | Completing AI Fluency track assignments | Collaborate with AI  | This track requires me to work with Claude, and I usually ask it to expound on explanations                                       |
 | 13  | Rephrasing / grammar checking           | Delegate with review | It's a mechanical fix, but I still check AI didn't change my meaning                                                              |
 | 14  | Replying to friends' messages           | Just me              | I want my replies to feel like people are actually talking to me, not AI                                                          |
