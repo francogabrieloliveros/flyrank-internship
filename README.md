@@ -1,6 +1,6 @@
 # Draw the Path
 
-Readme added for viewing convinience.
+Readme added for viewing convinience. [Project Link](https://claude.ai/share/b1ce7a08-2d70-4de9-a433-582b377459d1)
 
 ## General AI Fluency - Week 1
 
