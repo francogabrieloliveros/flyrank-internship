@@ -97,7 +97,6 @@ Tech Stack:
 
 Constraints:
 
-- No endpoint testing
 - Controllers not bundled into a single parent class
 - Use MONGODB_URI from an env file as the connection string
 - Use Mongoose for the model
