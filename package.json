@@ -1,0 +1,26 @@
+{
+  "name": "flyrank-internship",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/francogabrieloliveros/flyrank-internship#readme",
+  "bugs": {
+    "url": "https://github.com/francogabrieloliveros/flyrank-internship/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francogabrieloliveros/flyrank-internship.git"
+  },
+  "license": "ISC",
+  "author": "francogabrieloliveros",
+  "type": "module",
+  "main": "app.ts",
+  "scripts": {
+    "dev": "node app.ts"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6"
+  }
+}
