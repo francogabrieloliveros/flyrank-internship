@@ -1,8 +1,11 @@
 import express, { type Express, type Request, type Response } from "express";
+import swaggerUi from "swagger-ui-express";
+import openApiSpec from "./openapi.json" with { type: "json" };
 
 const app: Express = express();
 
 app.use(express.json());
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(openApiSpec));
 
 // Interfaces
 interface Task {
