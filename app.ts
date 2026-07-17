@@ -80,6 +80,56 @@ app.post("/tasks", (req: Request, res: Response) => {
   }
 });
 
+app.put("/tasks/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { title, done } = req.body;
+
+  const task = tasks.find((task) => task.id === parseInt(id));
+
+  if (!task) {
+    res.status(404).json({
+      success: false,
+      message: `Task ${id} not found.`,
+      error: "NOT_FOUND",
+    });
+  } else if (!title && typeof done !== "boolean") {
+    res.status(400).json({
+      success: false,
+      message: "Invalid body",
+      error: "BAD_REQUEST",
+    });
+  } else {
+    task.title = title ?? task.title;
+    task.done = done ?? task.done;
+
+    res.status(200).json({
+      success: true,
+      message: "Task updated successfully.",
+      data: task,
+    });
+  }
+});
+
+app.delete("/tasks/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const taskIndex = tasks.findIndex((task) => task.id === parseInt(id));
+
+  if (taskIndex === -1) {
+    res.status(404).json({
+      success: false,
+      message: `Task ${id} not found.`,
+      error: "NOT_FOUND",
+    });
+  } else {
+    tasks.splice(taskIndex, 1);
+    res.status(204).json({
+      success: true,
+      message: "Task successfully removed.",
+    });
+  }
+});
+
 // App
 const port = 3000;
 app.listen(port, () => {
