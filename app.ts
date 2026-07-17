@@ -57,6 +57,29 @@ app.get("/tasks/:id", (req: Request, res: Response) => {
   }
 });
 
+app.post("/tasks", (req: Request, res: Response) => {
+  const { title } = req.body;
+
+  if (!title) {
+    res.status(400).json({
+      success: false,
+      message: "No title provided.",
+      error: "BAD_REQUEST",
+    });
+  } else {
+    // Get the highest id and add 1
+    const newId: number = Math.max(...tasks.map((task) => task.id)) + 1;
+
+    const newTask = { id: newId, title, done: false };
+    tasks.push(newTask);
+    res.status(201).json({
+      success: true,
+      message: "Task successfully added.",
+      data: newTask,
+    });
+  }
+});
+
 // App
 const port = 3000;
 app.listen(port, () => {
