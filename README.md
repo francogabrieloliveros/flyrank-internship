@@ -223,6 +223,8 @@ I think the active rest days hint was misunderstood as it has a different meanin
 
 Both LLMs made the mistake of misinterpreting the active rest day hint. But honestly, ChatGPT caught the 'intermediate' level of the user better. I initially made this prompts trying to get a program closer to what I am using right now. And ChatGPT added exercises whose intensity matches mine. All in all, Calisthenics really is a new sport and right now, no LLM can make programs that can help me reach my goals.
 
+---
+
 ## Final Template
 
 ```
