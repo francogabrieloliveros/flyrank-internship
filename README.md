@@ -178,6 +178,8 @@ Make me a calisthenics training program using the user information and based on 
 </user-info>
 ```
 
+Approach the task like this:
+
 1. Ask yourself what the user's goals are. Based on that, list down all possible exercises that can help achieve those goals.
 2. From the list of exercises, focus on specificity. Cut down all the exercises that are not specific to the goal. Make sure that remaining exercises triggers central nervous system and muscular adaptation.
 3. Consider the user's level. From the remaining exercises, cut down all that is not doable yet. If there are lighter progressions, you can prioritize that.
@@ -238,6 +240,8 @@ Make me a calisthenics training program using the user information and based on 
     </goal-skills>
     <workout-days>{{WORKOUT_DAYS}}</workout-days>
 </user-info>
+
+Approach the task like this:
 
 1. Ask yourself what the user's goals are. Based on that, list down all possible exercises that can help achieve those goals.
 2. From the list of exercises, focus on specificity. Cut down all the exercises that are not specific to the goal. Make sure that remaining exercises triggers central nervous system and muscular adaptation.
