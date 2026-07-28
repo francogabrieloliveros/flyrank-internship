@@ -6,7 +6,7 @@
 
 A task management API that allows CRUD operations. It also comes with an interactive Swagger UI for exploring the API.
 
-## Install & run
+## Install, run, & options
 
 Installation
 
@@ -19,17 +19,21 @@ git checkout backend-ai-engineering/week3/connecting-to-the-database
 Running
 
 ```bash
-# Create the database
-npm run reset
-
-# Optional: Create seed data
-npm run seed
-
 # Install dependencies and start server
 npm install && npm run dev
 ```
 
 The server starts on `http://localhost:3000`. Interactive docs are available at `http://localhost:3000/docs`.
+
+Options
+
+```bash
+# Optional: Reset database
+npm run reset
+
+# Optional: Create seed data
+npm run seed
+```
 
 ## Endpoints
 
