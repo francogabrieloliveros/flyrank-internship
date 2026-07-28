@@ -19,6 +19,13 @@ git checkout backend-ai-engineering/week3/connecting-to-the-database
 Running
 
 ```bash
+# Create the database
+npm run reset
+
+# Optional: Create seed data
+npm run seed
+
+# Install dependencies and start server
 npm install && npm run dev
 ```
 
