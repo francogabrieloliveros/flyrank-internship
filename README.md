@@ -9,12 +9,15 @@ A task management API that allows CRUD operations. It also comes with an interac
 ## Install & run
 
 Installation
+
 ```bash
 git clone https://github.com/francogabrieloliveros/flyrank-internship.git
 cd flyrank-internship
-git checkout backend-ai-engineering/week2/build-your-first-crud-api
+git checkout backend-ai-engineering/week3/connecting-to-the-database
 ```
+
 Running
+
 ```bash
 npm install && npm run dev
 ```

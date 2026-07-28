@@ -13,11 +13,12 @@
   "license": "ISC",
   "author": "francogabrieloliveros",
   "type": "module",
-  "main": "app.ts",
+  "main": "index.ts",
   "scripts": {
-    "dev": "node app.ts"
+    "dev": "node index.ts"
   },
   "dependencies": {
+    "better-sqlite3": "^13.0.1",
     "express": "^5.2.1",
     "swagger-ui-express": "^5.0.1"
   },
