@@ -15,9 +15,7 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "dev": "node index.ts",
-    "reset": "node src/config/reset.ts",
-    "seed": "node src/config/seed.ts"
+    "dev": "node index.ts"
   },
   "dependencies": {
     "better-sqlite3": "^13.0.1",

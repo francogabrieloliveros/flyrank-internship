@@ -6,7 +6,7 @@
 
 A task management API that allows CRUD operations. It also comes with an interactive Swagger UI for exploring the API.
 
-## Install, run, & options
+## Install & Run
 
 Installation
 
@@ -25,15 +25,17 @@ npm install && npm run dev
 
 The server starts on `http://localhost:3000`. Interactive docs are available at `http://localhost:3000/docs`.
 
-Options
+## SQLite
 
-```bash
-# Optional: Reset database
-npm run reset
+SQLite was used as the database for this project as it allows for a very easy setup, data persistence, and same directory location for database items. **better-sqlite3** and **DB Browser for SQLite** were also one of the reasons why it was chosen. Upon setup, the database items will be stored in the `tasks.db` file.
 
-# Optional: Create seed data
-npm run seed
+```SQL
+SELECT * FROM tasks;
 ```
+
+You can try running this command through DB Browser for SQLite or better-sqlite3 to list all tasks that are currently in the data base.
+
+![](./swagger-screenshots/sqlite.jpeg)
 
 ## Endpoints
 
@@ -50,6 +52,7 @@ npm run seed
 ## Example request
 
 ```
+
 $ curl -i http://localhost:3000/tasks
 
 HTTP/1.1 200 OK
@@ -62,6 +65,7 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 
 {"success":true,"message":"Tasks retrieved successfully.","data":[{"id":1,"title":"Finish BE-01","done":true},{"id":2,"title":"Finish FL-03","done":false},{"id":3,"title":"Feed the dog","done":false}]}⏎
+
 ```
 
 ## Swagger UI Screenshots
