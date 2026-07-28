@@ -1,6 +1,6 @@
-# Build Your First CRUD API
+# Connecting to the Database
 
-## Backend AI Engineering - Week 2
+## Backend AI Engineering - Week 3
 
 ## Task API
 
