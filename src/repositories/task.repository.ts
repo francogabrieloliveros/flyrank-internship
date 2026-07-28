@@ -18,24 +18,27 @@ class TaskRepository {
     return { id: info.lastInsertRowid as number, ...data };
   };
 
-  // update = async (id: number, data: Partial<Task>): Promise<Task | null> => {
-  //   const task = this.tasks.find((t: Task) => t.id === id);
-  //   if (!task) return null;
+  update = async (id: number, data: Partial<Task>): Promise<Task | null> => {
+    const task = await this.findById(id);
+    if (!task) return null;
 
-  //   task.done = data.done ?? task.done;
-  //   task.title = data.title ?? task.title;
+    const title = data.title ?? task.title;
+    const done = data.done ?? task.done;
 
-  //   return task;
-  // };
+    db.prepare(
+      `
+      UPDATE tasks
+      SET title = ?, done = ?
+      WHERE id = ?`,
+    ).run(title, done ? 1 : 0, id);
 
-  // remove = async (id: number): Promise<boolean> => {
-  //   const taskIndex = this.tasks.findIndex((task) => task.id === id);
+    return { ...task, title, done };
+  };
 
-  //   if (taskIndex === -1) return false;
-
-  //   this.tasks.splice(taskIndex, 1);
-  //   return true;
-  // };
+  remove = async (id: number): Promise<boolean> => {
+    const info = db.prepare(`DELETE FROM tasks WHERE id = ?`).run(id);
+    return info.changes > 0;
+  };
 }
 
 export default new TaskRepository();
