@@ -11,14 +11,12 @@ class TaskRepository {
       Task | undefined;
   };
 
-  // create = async (data: Omit<Task, "id">): Promise<Task> => {
-  //   const newId: number = Math.max(...this.tasks.map((task) => task.id)) + 1;
+  create = async (data: Omit<Task, "id">): Promise<Task> => {
+    const insert = db.prepare(`INSERT INTO tasks (title, done) VALUES (?, ?)`);
+    const info = insert.run(data.title, data.done ? 1 : 0);
 
-  //   const newTask = { id: newId, ...data };
-  //   this.tasks.push(newTask);
-
-  //   return newTask;
-  // };
+    return { id: info.lastInsertRowid as number, ...data };
+  };
 
   // update = async (id: number, data: Partial<Task>): Promise<Task | null> => {
   //   const task = this.tasks.find((t: Task) => t.id === id);
