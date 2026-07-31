@@ -37,21 +37,10 @@ I already had simple logos for my projects. But I wanted to try what Claude woul
 
 | Claude                                    | Original                                                   |
 | ----------------------------------------- | ---------------------------------------------------------- |
-| ![](./proof-of-work/draw-collab-icon.svg) | <img src="./proof-of-work/draw.png" height="20px"/>        |
-| ![](./proof-of-work/draw-collab-icon.svg) | <img src="./proof-of-work/farmtotable.png" height="20px"/> |
-| ![](./proof-of-work/draw-collab-icon.svg) | <img src="./proof-of-work/palayok.png" height="20px"/>     |
+| ![](./proof-of-work/draw-collab-icon.svg) | <img src="./proof-of-work/draw.png" height="200px"/>        |
+| ![](./proof-of-work/farm-to-table-icon.svg) | <img src="./proof-of-work/farmtotable.png" height="200px"/> |
+| ![](./proof-of-work/palayok-icon.svg) | <img src="./proof-of-work/palayok.png" height="200px"/>     |
 
-| Claude                                    | Original                                                   |
-| ----------------------------------------- | ---------------------------------------------------------- |
-| ![](./proof-of-work/draw-collab-icon.svg) | <img src="./proof-of-work/draw.png" height="20px"/>        |
-| ![](./proof-of-work/draw-collab-icon.svg) | <img src="./proof-of-work/farmtotable.png" height="20px"/> |
-| ![](./proof-of-work/draw-collab-icon.svg) | <img src="./proof-of-work/palayok.png" height="20px"/>     |
-
-| Claude                                                          | Original                                                   |
-| --------------------------------------------------------------- | ---------------------------------------------------------- |
-| <img src="./proof-of-work/draw-collab-icon.svg" height="20px"/> | <img src="./proof-of-work/draw.png" height="20px"/>        |
-| <img src="./proof-of-work/draw-collab-icon.svg" height="20px"/> | <img src="./proof-of-work/farmtotable.png" height="20px"/> |
-| <img src="./proof-of-work/draw-collab-icon.svg" height="20px"/> | <img src="./proof-of-work/palayok.png" height="20px"/>     |
 
 Yes, Claude followed my design philosophy for the icons. But I want the portfolio to follow that philosophy, not every project. I want every project to have their own quirks, hence, the variance in color.
 
