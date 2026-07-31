@@ -73,7 +73,7 @@ These are univesal and origanization logos so I did not generate them.
 
 | Resume                                           | Github                                           | LinkedIn                                           | Email                                           |
 | ------------------------------------------------ | ------------------------------------------------ | -------------------------------------------------- | ----------------------------------------------- |
-| <img src="./contact/resume.svg" height="200px"/> | <img src="./contact/github.svg" height="200px"/> | <img src="./contact/linkedin.svg" height="200px"/> | <img src="./contact/email.svg" height="200px"/> |
+| <img src="./contact/resume.svg" height="50px"/> | <img src="./contact/github.svg" height="50px"/> | <img src="./contact/linkedin.svg" height="50px"/> | <img src="./contact/email.svg" height="50px"/> |
 
 ---
 
