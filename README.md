@@ -6,36 +6,37 @@
 
 A task management API that allows CRUD operations. It also comes with an interactive Swagger UI for exploring the API.
 
-## Install & Run
+## Setup and Running
 
-Installation
+### Setup
 
 ```bash
+# Clone the repository
 git clone https://github.com/francogabrieloliveros/flyrank-internship.git
+# Enter the project directory
 cd flyrank-internship
-git checkout backend-ai-engineering/week3/connecting-to-the-database
+# Checkout the desired branch
+git checkout backend-ai-engineering/week3/containerize-your-stack
+# Create an .env file
+cp .env.example .env
 ```
 
-Running
+After this, open the `.env` file and update the DATABASE_URL as needed.
+
+### Running
+
+Make sure you have Docker installed on your machine.
 
 ```bash
-# Install dependencies and start server
-npm install && npm run dev
+# Run the api and database
+docker compose up
 ```
 
 The server starts on `http://localhost:3000`. Interactive docs are available at `http://localhost:3000/docs`.
 
-## SQLite
+## Data In Volume
 
-SQLite was used as the database for this project as it allows for a very easy setup, data persistence, and same directory location for database items. **better-sqlite3** and **DB Browser for SQLite** were also one of the reasons why it was chosen. Upon setup, the database items will be stored in the `tasks.db` file.
-
-```SQL
-SELECT * FROM tasks;
-```
-
-You can try running this command through DB Browser for SQLite or better-sqlite3 to list all tasks that are currently in the data base.
-
-![](./swagger-screenshots/sqlite.jpeg)
+![](swagger-screenshots/data.jpeg)
 
 ## Endpoints
 
