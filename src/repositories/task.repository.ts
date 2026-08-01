@@ -1,5 +1,5 @@
 import type Task from "../models/task.model.ts";
-import client from "../db/db.ts";
+import client from "../config/db.ts";
 
 class TaskRepository {
   findAll = async (): Promise<Task[]> => {
