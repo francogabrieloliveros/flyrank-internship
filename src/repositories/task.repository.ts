@@ -7,10 +7,14 @@ class TaskRepository {
     return rows as Task[];
   };
 
-  // findById = async (id: number): Promise<Task | undefined> => {
-  //   return db.prepare(`SELECT * FROM tasks WHERE id = ?`).get(id) as
-  //     Task | undefined;
-  // };
+  findById = async (id: number): Promise<Task | undefined> => {
+    const query = { text: "SELECT * FROM tasks WHERE id = $1", values: [id] };
+    const {
+      rows: [task],
+    } = await client.query(query);
+
+    return task as Task | undefined;
+  };
 
   // create = async (data: Omit<Task, "id">): Promise<Task> => {
   //   const insert = db.prepare(`INSERT INTO tasks (title, done) VALUES (?, ?)`);
