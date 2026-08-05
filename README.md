@@ -8,6 +8,9 @@
 
 ### Overview
 
+This automation workflow utilizes your resume to score it against job search results of the position your looking for. Good matches are then added to a google sheets document. Sadly, I am not able to share the workflow itself since I ran it locally.
+
+
 **Schedule Trigger**: It is scheduled to run the workflow every 8am in the morning.
 
 **Config**: You can set the adzuna job api details (country, page, app_id, app_key, results_per_page, what_end) and your resume details here.
