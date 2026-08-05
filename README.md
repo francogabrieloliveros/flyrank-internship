@@ -8,8 +8,7 @@
 
 ### Overview
 
-This automation workflow utilizes your resume to score it against job search results of the position your looking for. Good matches are then added to a google sheets document. Sadly, I am not able to share the workflow itself since I ran it locally.
-
+This automation workflow utilizes your resume to score it against job search results of the position your looking for. Good matches are then added to a google sheets document. This is the json of the [workflow](https://github.com/francogabrieloliveros/flyrank-internship/blob/general-ai-fluency/week4/ship-an-automation-workflow-v2/My%20workflow.json). 
 
 **Schedule Trigger**: It is scheduled to run the workflow every 8am in the morning.
 
