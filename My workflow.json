@@ -1,0 +1,467 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -48,
+        256
+      ],
+      "id": "61978560-627b-44b1-befe-5c25597909d8",
+      "name": "Schedule Trigger",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "url": "=https://api.adzuna.com/v1/api/jobs/{{$json.country}}/search/{{$json.page}}?app_id={{$json.app_id}}&app_key={{$json.app_key}}&results_per_page={{$json.results_per_page}}&what_and={{ $json.what_and.split(' ').join('%20') }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        400,
+        256
+      ],
+      "id": "358ef30d-012a-4e7b-848c-74c8ee1b5947",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "results",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        624,
+        256
+      ],
+      "id": "235079cf-65b6-4c63-bf7b-6c24b70da532",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a6955839-7197-4f35-a3b1-93e0a9809804",
+              "name": "country",
+              "value": "au",
+              "type": "string"
+            },
+            {
+              "id": "6df8213b-575e-484a-96e1-4478710d01e8",
+              "name": "page",
+              "value": 1,
+              "type": "number"
+            },
+            {
+              "id": "b53f7f19-0481-4f51-881d-040629d544ba",
+              "name": "app_id",
+              "value": "d77ec52d",
+              "type": "string"
+            },
+            {
+              "id": "2fe28c3d-c556-4474-a035-884c1daee0a5",
+              "name": "app_key",
+              "value": "d38ec000f7a8bfa7fd03637eabba1411",
+              "type": "string"
+            },
+            {
+              "id": "b06e9f4d-90e2-4cce-95e4-85d126a29e80",
+              "name": "results_per_page",
+              "value": 3,
+              "type": "number"
+            },
+            {
+              "id": "7bcaba44-ef3d-4194-9f11-0052219dc7e3",
+              "name": "what_and",
+              "value": "marketing intern",
+              "type": "string"
+            },
+            {
+              "id": "d4f4bc50-e335-4cae-baa0-d85994492772",
+              "name": "resume_details",
+              "value": "SUMMARY Computer Science student at the University of the Philippines Los Baños with hands-on experience building full stack web and mobile applications using the MERN stack, React, and Flutter. Passionate about solving real-world problems through clean, efficient code — from real-time collaborative tools to AI-integrated mobile apps. Proficient in Git, Docker, and CI/CD workflows, and eager to bring technical depth and a strong work ethic to a software engineering internship. EDUCATION University of the Philippines  Los Baños                                                                                                  Expected May 2028 Bachelor of Science in Computer Science · GWA: 1.31/1.0 (Honors) Relevant Coursework: File Processing and Database Systems, Data Structures and Algorithms, Object-Oriented Programming, Web Programming, Mobile Computing TECHNICAL SKILLS Languages: Python, JavaScript/ TypeScript, Dart,  C/C++, Java, R, SQL Frameworks: React, Flutter, Express.js, Node.js, Socket.IO, Tailwind CSS Databases: MongoDB, MySQL, Firebase Firestore Tools & DevOps: Git, GitHub, Docker, GitHub Actions, Linux (Ubuntu / Arch) Concepts: REST APIs, OOP, DSA, CI/CD, Real-time Systems, Embedded Systems PROJECTS Draw Collab                                                                                                                                                                     GitHub Socket.IO · Express.js · React · Tailwind CSS Supported 50+ concurrent users by architecting an event-driven Node.js/Socket.IO server, achieving real-time canvas sync and sub-200ms broadcast latency across all active clients. Validated system stability by processing 2,200+ drawing packets under load testing, confirming throughput. Ensured 100% visual consistency for new clients by engineering a canvas state-retention system on join. GLOFLEX                                                                                                                                                                        GitHub C++ · Arduino · Flex Sensors · Accelerometer · MP3 Module Achieved 73.7% gesture-to-speech accuracy by fusing flex sensor and accelerometer data on Arduino for ASL. Reduced average latency to 0.98s by optimizing firmware execution and data structures, with 0.44s peak response. Translated 26 of 37 ASL gestures into real-time audio via MP3 module, achieving an \"Accurate\" performance rating. Palayok                                                                                                                                                                             GitHub Dart · Flutter · Firebase · GitHub Actions · Google Gemini API Designed a post-creation interface with camera and maps integration for food photo capture and pickup tagging. Integrated Google Gemini API to build an LLM recipe engine, generating ingredient lists and cooking instructions. Farm-to-table                                                                                                                                                                  GitHub TypeScript · React · NodeJS · ExpressJS · MongoDB · Docker  · Cloudinary Built an admin inventory dashboard with Cloudinary image uploads, MongoDB search, and full CRUD management. Streamlined order management by building an admin dashboard with real-time approval and cancellation controls, providing full audit trail visibility across all consumer transactions. Hospital Logbook System                                                                                                                                             GitHub Java · JavaFX · File I/O Maintained 0% data loss by engineering a File I/O storage engine synchronizing in-memory state with local records. Ensured 100% data integrity by implementing mutex-style read/write lock logic with state-dependent access control. Greenvale Pollutant Reduction Project                                                                                                                       GitHub JavaScript · React · Tailwind CSS · Linear Programming Achieved 100% cost-optimization accuracy by implementing a Dual Simplex Minimization algorithm, identifying the most cost-effective pollutant mitigation combination for the city.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        176,
+        256
+      ],
+      "id": "d9717c05-947a-459d-95fe-69902f020efa",
+      "name": "Config"
+    },
+    {
+      "parameters": {
+        "model": "poolside/laguna-s-2.1:free",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1368,
+        232
+      ],
+      "id": "3a9ae5cd-2787-4eb9-b7b2-81bdc767f650",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "8cMxJVXLKI2X1M5c",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Hi, you are a helpful job matcher, you read my resume then analyze the given resume and job description and provide a job matching score.output must be parse in json without error. \n\nfor example your response should be like: {\"score\": 80 }\n\njob_data: {{ $json.string }}\nmy_resume: {{ $('Config').item.json.resume_details }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1296,
+        0
+      ],
+      "id": "42943301-c499-4428-bc21-ba1f3abdc86c",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1072,
+        256
+      ],
+      "id": "7a816ff0-ecbe-4593-831c-a77812a4cbc2",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.output.replaceAll(/```(?:json)?/g, \"\") }}",
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        1648,
+        0
+      ],
+      "id": "a6092da8-4785-4719-8353-0b94b4669e72",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1yTG7d7HplbG3jz7HLBLI_Ma7zcatpEu6-KLJdL7so5U",
+          "mode": "list",
+          "cachedResultName": "Job Search",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1yTG7d7HplbG3jz7HLBLI_Ma7zcatpEu6-KLJdL7so5U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1yTG7d7HplbG3jz7HLBLI_Ma7zcatpEu6-KLJdL7so5U/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Score": "={{ $json.score }}",
+            "Link": "={{ $('Jobs').item.json.data.redirect_url }}",
+            "Title": "={{ $('Jobs').item.json.data.title }}",
+            "Company": "={{ $('Jobs').item.json.data.company.display_name }}"
+          },
+          "matchingColumns": [
+            "Tite"
+          ],
+          "schema": [
+            {
+              "id": "Score",
+              "displayName": "Score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Company",
+              "displayName": "Company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2096,
+        192
+      ],
+      "id": "328d1f86-0f7c-45a0-a8de-1e92061cd00d",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "YPgp6hEkXpP621qQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const result = $input.all().map(item => ({\n  json: { string: JSON.stringify(item.json), data: item.json }\n}));\n\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        848,
+        256
+      ],
+      "id": "36fb6b79-e708-4547-a925-72bbf30762e8",
+      "name": "Jobs"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ea5b9c77-8894-47a6-b386-71f81edd9570",
+              "leftValue": "={{ parseInt($json.score) }}",
+              "rightValue": 50,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1872,
+        128
+      ],
+      "id": "1612e8f8-9f31-4051-ae50-47cdacba3dbf",
+      "name": "If"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jobs": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "14a1869e-a681-439e-b9a2-8da83a6b6a2a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d75d45c733a8f8d4b3f253c75901d57f4f8af4a0fd3708e04d5b45523fa506ca"
+  },
+  "nodeGroups": [],
+  "id": "AhKsij5FsEbHv75M",
+  "tags": []
+}
