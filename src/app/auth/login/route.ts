@@ -11,12 +11,7 @@ const login = async (request: Request) => {
     );
   }
 
-  const {
-    data: {
-      session: { access_token, refresh_token },
-    },
-    error,
-  } = await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
@@ -27,6 +22,10 @@ const login = async (request: Request) => {
       { status: 401 },
     );
   }
+
+  const {
+    session: { access_token, refresh_token },
+  } = data;
 
   return NextResponse.json(
     {
