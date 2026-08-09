@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
 
-const profile = async (request: Request) => {
+const dashboard = async (request: Request) => {
   const userId = request.headers.get("x-user-id");
   const userEmail = request.headers.get("x-user-email");
 
   return NextResponse.json(
     {
       success: true,
-      message: "Hellow",
+      message: "This is the dashboard.",
       data: { userId, userEmail },
     },
     { status: 200 },
   );
 };
 
-export const GET = profile;
+export const GET = dashboard;
