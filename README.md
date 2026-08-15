@@ -1,0 +1,13 @@
+# Personal Website Live on the FlyRank Domain
+
+## General AI Fluency - Week 5
+
+## DNS Walkthrough
+
+In a web browser, whenever we type a URL and hit enter, we are accessing files of another computer (server) through the internet. The front part of these URLs are called domains; like google.com, maps.google.com etc. To access the files of another computer using these texts, these texts called domain name are recorded and mapped to the IP address (the unique code assigned to each computer) of the computer. Through these records, the domain names resolve to the IP address behind the scenes when access a domain.
+
+CNAME or canonical name record is basically an alias to another domain so the CNAME does not directly point to the IP address. Organizations usually own multiple domains, but they might also update or change their computers, changing the IP address and requiring multiple remaps. However CNAME record resolves this problem. For example, are google's domains (I don't know if this is actually how they implemented it). You have google.com as their main domain, pointing directly to an IP adress through the record. However they have forms.google.com, classroom.google.com, mail.google.com, meet.google.com and many more. Rather than making each of these domains point directly to the IP adress of a computer, they make it point to google.com through a CNAME record. Then, google.com points to the IP address of the computer. With this, if the IP address of the computer changes, they only need to re-point google.com, rather than adjusting all of their domains.
+
+In these internship, I can currently ship my websites through services such as netlify. However, I will be assigned a domain under my name in the flyrank domain. To avoid having to remap the domain to the IP address of my previous server, I can utilize CNAME records such that the new domain will just point to the old domain.
+
+What happens when someone tries to access my domain franco-oliveros.flyrank.com? To understand, lets dive more deeply into what domains are. Each domain can actually be reordered into a graph, separated by dots from right to left. Each parts of these domains are actually a record on a nameserver. For example a nameserver has a .com record, and the .com nameserver has a .flyrank record, and a .flyrank nameserver has a franco-oliveros record. In case of a CNAME record, when someone opens franco-oliveros.flyrank.com, the browser asks the resolver where this domain is, then the resolver asks the nameserver if the domain has a record and points to anything, then tries to access the resolved IP address. The browser can send requests to the server through the IP address, and the response can be any file, like the website im trying to deploy.
