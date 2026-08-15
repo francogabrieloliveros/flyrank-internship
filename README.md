@@ -1,6 +1,6 @@
 # The polite scraper
 
-## General AI Fluency - Week 6
+## General AI Fluency - Week 5
 
 I will not reuse this code on another site without checking its rules and terms first.
 
