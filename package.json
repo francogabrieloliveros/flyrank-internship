@@ -8,5 +8,11 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "node src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0"
   }
 }
