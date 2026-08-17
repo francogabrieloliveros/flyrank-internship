@@ -2,6 +2,7 @@ import { fetchCataloguePage } from "./catalogue/fetch.ts";
 import { parsePage } from "./catalogue/parse.ts";
 import { fetchBookDetails } from "./books/fetch.ts";
 import type { BookDetails } from "./books/types.ts";
+import { recordToFile } from "./record.ts";
 
 const CATALOGUE_START = "https://books.toscrape.com/catalogue/page-1.html";
 const MAX_PAGES = 3;
@@ -62,6 +63,10 @@ const main = async () => {
   console.log(`unique_urls=${bookSources.size}`);
   console.log(`detail_pages=${records.length}`);
   console.log(records[0]);
+
+  records.push({ product_url: "https://tite.com" } as BookDetails);
+
+  recordToFile(records);
 };
 
 main();

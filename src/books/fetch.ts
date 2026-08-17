@@ -50,6 +50,9 @@ const parseBookDetails = (
     title: $main.find("h1").text().trim(),
     product_url: bookUrl,
     price_text: $main.find(".price_color").text().trim(),
+    price_gbp: parseFloat(
+      $main.find(".price_color").text().trim().replace("£", ""),
+    ),
     availability_text: $main.find(".availability").text().trim(),
     rating_text:
       $(".product_page .star-rating")

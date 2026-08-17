@@ -2,6 +2,7 @@ export interface BookDetails {
   title: string;
   product_url: string;
   price_text: string;
+  price_gbp: number;
   availability_text: string;
   rating_text: string;
   description: string | null;
