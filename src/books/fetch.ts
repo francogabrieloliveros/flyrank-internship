@@ -10,6 +10,7 @@ import {
 import { politeFetch } from "../http.ts";
 import { POLITE_DELAY_MS } from "../config.ts";
 import type { BookDetails } from "./types.ts";
+import { recordReport } from "../record.ts";
 
 const CACHE_DIR = "cache/records";
 
@@ -23,6 +24,7 @@ export const fetchBookDetails = async (
   if (await fileExists(`${CACHE_DIR}/${filename}`)) {
     console.log(`CACHE HIT ${bookUrl}`);
     const cached = await readCache(CACHE_DIR, filename);
+    await recordReport("cacheHit", 1);
     return JSON.parse(cached) as BookDetails;
   }
 

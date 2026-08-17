@@ -2,7 +2,7 @@ import { fetchCataloguePage } from "./catalogue/fetch.ts";
 import { parsePage } from "./catalogue/parse.ts";
 import { fetchBookDetails } from "./books/fetch.ts";
 import type { BookDetails } from "./books/types.ts";
-import { recordToFile } from "./record.ts";
+import { recordReport, recordToFile } from "./record.ts";
 
 const CATALOGUE_START = "https://books.toscrape.com/catalogue/page-1.html";
 const MAX_PAGES = 3;
@@ -19,19 +19,23 @@ const discoverBooks = async (): Promise<{
   let currentUrl: string | null = CATALOGUE_START;
 
   while (currentUrl && pagesCount < MAX_PAGES) {
-    const htmlString = await fetchCataloguePage(currentUrl);
-    const { bookUrls, nextPageUrl } = parsePage(htmlString, currentUrl);
+    try {
+      const htmlString = await fetchCataloguePage(currentUrl);
+      const { bookUrls, nextPageUrl } = parsePage(htmlString, currentUrl);
 
-    pagesCount++;
-    discoveredCount += bookUrls.length;
+      pagesCount++;
+      discoveredCount += bookUrls.length;
 
-    for (const bookUrl of bookUrls) {
-      if (!bookSources.has(bookUrl)) {
-        bookSources.set(bookUrl, currentUrl);
+      for (const bookUrl of bookUrls) {
+        if (!bookSources.has(bookUrl)) {
+          bookSources.set(bookUrl, currentUrl);
+        }
       }
-    }
 
-    currentUrl = nextPageUrl;
+      currentUrl = nextPageUrl;
+    } catch (err) {
+      await recordReport("failedPages", 1);
+    }
   }
 
   return { pagesCount, discoveredCount, bookSources };
@@ -55,6 +59,12 @@ const fetchAllBookDetails = async (
 };
 
 const main = async () => {
+  const startTime = Date.now();
+  await recordReport("startTime", new Date(startTime).toISOString(), {
+    add: false,
+    new: true,
+  });
+
   const { pagesCount, discoveredCount, bookSources } = await discoverBooks();
   const records = await fetchAllBookDetails(bookSources);
 
@@ -66,7 +76,11 @@ const main = async () => {
 
   records.push({ product_url: "https://tite.com" } as BookDetails);
 
-  recordToFile(records);
+  await recordToFile(records);
+
+  await recordReport("duration", Date.now() - startTime, {
+    add: false,
+  });
 };
 
 main();

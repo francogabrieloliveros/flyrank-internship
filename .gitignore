@@ -1,6 +1,6 @@
 # dependencies
 cache/
-outputs/
+output/
 /node_modules
 /.pnp
 .pnp.*
