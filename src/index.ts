@@ -1,5 +1,9 @@
-import SwaggerParser from "@apidevtools/swagger-parser";
+import { openapiToJson, extractEndpoints, buildSchemaLookup } from "@/openapi";
+import { createValidateResponse, executeRequest } from "@/tools/index";
 
-const spec = await SwaggerParser.validate("./openapi.json");
+const spec = await openapiToJson("./openapi.json");
+const endpoints = extractEndpoints(spec);
+const getZodSchemaFor = buildSchemaLookup(endpoints);
+const validateResponse = createValidateResponse(getZodSchemaFor);
 
-console.dir(spec, { depth: null, colors: true });
+const tools = { executeRequest, validateResponse };
