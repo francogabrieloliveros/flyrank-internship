@@ -1,9 +1,4 @@
-import OpenAI from "openai";
-
-const client = new OpenAI({
-  baseURL: process.env.OPENROUTER_BASE_URL,
-  apiKey: process.env.OPENROUTER_API_KEY,
-});
+import client from "./client";
 
 const res = await client.chat.completions.create({
   model: process.env.LLM_MODEL!,
