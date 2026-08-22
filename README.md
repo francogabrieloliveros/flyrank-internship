@@ -25,7 +25,7 @@ cp .env.example .env
 ### Running
 
 - Move the **openapi.json** to the same directory before running
-- Setup the .env file, make sure that PORT and TARGET_PORT have the same port number and that you have an OPENROUTER_API_KEY from [openrouter]("https://openrouter.ai")
+- Setup the .env file, make sure that PORT and TARGET_PORT have the same port number and that you have an OPENROUTER_API_KEY from [openrouter](https://openrouter.ai)
 
 ```bash
 # Install the dependencies
