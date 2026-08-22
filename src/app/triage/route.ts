@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import LLMService from "@/lib/services/llm.service";
+import LLMService, { LLMUnavailableError } from "@/lib/services/llm.service";
 
 export const POST = async (request: Request) => {
   const { prompt } = await request.json();
@@ -21,6 +21,13 @@ export const POST = async (request: Request) => {
       { status: 200 },
     );
   } catch (err) {
+    if (err instanceof LLMUnavailableError) {
+      return NextResponse.json(
+        { success: false, message: err.message },
+        { status: 504 },
+      );
+    }
+
     return NextResponse.json(
       {
         success: false,
