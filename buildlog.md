@@ -36,3 +36,12 @@
 - The agent responded in json but it doesnt follow the schema so its causing a parse error
 - I had to change to a model that supports "response_format" parameter, I tried about 5 free models
 - I landed at nvidia/nemotron-3-super-120b-a12b:free
+
+## Added Guardrails
+
+- Ensured that the requests are only for localhost apis
+- Since there is no tool that uses fs, no file mutation will occur
+- I had to keep in mind that since I'm using openrouter free, I am limited to 50 requests per day and maximume 20 requests per minute
+- I limited stopWhen isStep count 30 so if the api requires 30 tool calls, I'll still have room for summary
+- This however limits the agent from testing large APIs with lots of endpoints, but that is the limit of the free budget
+- I also added a rate limiter for the agent tool calls, where in every 20th step, it'll wait for 1 minute to avoid openrouter's rate limit

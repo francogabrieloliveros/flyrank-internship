@@ -1,6 +1,13 @@
 import { tool } from "ai";
 import { z } from "zod";
 
+const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "::1"]);
+
+const isHostLocal = (hostname: string): boolean => {
+  if (LOCAL_HOSTS.has(hostname)) return true;
+  return /^127\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(hostname);
+};
+
 const executeRequest = tool({
   description: "Send an HTTP request to the local API server being tested",
   inputSchema: z.object({
@@ -10,7 +17,16 @@ const executeRequest = tool({
     body: z.any().optional(),
   }),
   execute: async ({ path, method, headers, body }) => {
-    const url = `http://localhost:${process.env.TARGET_PORT}${path}`;
+    const url = new URL(path, `http://localhost:${process.env.TARGET_PORT}`);
+
+    if (!isHostLocal(url.hostname)) {
+      return {
+        error: true,
+        blocked: true,
+        message: `Refused: "${url.hostname}" is not a loopback host. This agent may only send requests to localhost.`,
+      };
+    }
+
     const start = Date.now();
     try {
       const res = await fetch(url, {
