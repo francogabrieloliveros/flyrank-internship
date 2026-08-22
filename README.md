@@ -1,10 +1,10 @@
-# Auth - Login & Protect
+# Connect to an AI API
 
-## Backend AI Engineering - Week 4
+## Backend AI Engineering - Week 6
 
-## Auth & Login API
+## Task API
 
-An API that tests authentication and authorization through Next.js and Supabase.
+A task management API that allows CRUD operations. It also comes with an interactive Swagger UI for exploring the API.
 
 ## Setup and Running
 

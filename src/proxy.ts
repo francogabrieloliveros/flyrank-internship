@@ -37,5 +37,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/protected/:path*", "/auth/logout"],
+  matcher: ["/protected/:path*", "/auth/logout", "/tasks/:path*"],
 };
