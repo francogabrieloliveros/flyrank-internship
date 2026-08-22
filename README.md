@@ -2,9 +2,9 @@
 
 ## Backend AI Engineering - Week 6
 
-## Task API
+## Triage Endpoint
 
-A task management API that allows CRUD operations. It also comes with an interactive Swagger UI for exploring the API.
+The endpoint accepts a support ticket message and tries to categorize it so it goes to the proper channels. It reads your prompt or support ticket message then sends it to a Large Language Model so it can reason and identify whether the message is billing, bug, feature, or other. The LLM also scores it guess from 0 - 1, depending on how difficult it is do discern. Lastly, it also adds a severity grade, so the support ticket can be identified as low or high severity.
 
 ## Setup and Running
 
@@ -16,7 +16,7 @@ git clone https://github.com/francogabrieloliveros/flyrank-internship.git
 # Enter the project directory
 cd flyrank-internship
 # Checkout the desired branch
-git checkout backend-ai-engineering/week4/auth-login-%26-protect
+git checkout backend-ai-engineering/week6/connect-to-an-ai-api
 # Create an .env file
 cp .env.example .env
 ```
@@ -30,59 +30,86 @@ Make sure you have Docker installed on your machine.
 ```bash
 # Run the api and database
 docker compose up
+
+# Run the tests
+npm run test
 ```
 
-The server starts on `http://localhost:3000`. Interactive docs are available at `http://localhost:3000/docs`.
+The server starts on `http://localhost:3000`.
 
-## Endpoints
+## Sample Command
 
-| Method | Path                   | Description                        | Body                                         | Success | Error(s) |
-| ------ | ---------------------- | ---------------------------------- | -------------------------------------------- | ------- | -------- |
-| POST   | `/auth/signup`         | Sign up a new user                 | `{ "email": string, "password": string }`    | 201     | 400, 401 |
-| POST   | `/auth/login`          | Log in with email/password         | `{ "email": string, "password": string }`    | 200     | 400, 401 |
-| POST   | `/auth/logout`         | Log out the current user           | — (requires `Authorization: Bearer <token>`) | 204     | 401      |
-| GET    | `/protected/profile`   | Get authenticated user's profile   | — (requires `Authorization: Bearer <token>`) | 200     | 401      |
-| GET    | `/protected/dashboard` | Get authenticated user's dashboard | — (requires `Authorization: Bearer <token>`) | 200     | 401      |
-| GET    | `/public/info`         | Get public welcome info            | —                                            | 200     | —        |
+```
+curl -i -X "POST" http://localhost:3000/triage -d '{"prompt": "My payment did not go through but my bank account balance was reduced"}'
 
-## Swagger UI Screenshots
+HTTP/1.1 200 OK
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+content-type: application/json
+Date: Sat, 22 Aug 2026 13:19:07 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
 
-Try out the API endpoints interactively [here](http://localhost:3000/docs) after running the server.
+{"success":true,"data":{"category":"billing","urgency":"high","confidence":0.9,"reason":"User reports a payment failure with a deduction from their bank account."},"message":"Triage completed successfully."}
+```
 
-**/auth/signup**
+## Job Card
 
-<img width="825" height="1005" alt="Image" src="https://github.com/user-attachments/assets/95ac4f16-ced0-43c4-a319-511710dff064" />
+What it does (one sentence): Classifies a support message so it lands on the right team.
 
----
+Input: { "text": "string, 1-2000 characters" }
 
-**/auth/login**
+Output: { "category": one of [billing|bug|feature|other],
+"urgency": one of [low|normal|high],
+"confidence": 0.0-1.0,
+"reason": "one short sentence" }
 
-<img width="822" height="1002" alt="Image" src="https://github.com/user-attachments/assets/4122dc6c-d3aa-4766-99fa-62a3ca4eb591" />
+It must never: invent a category outside the list · return free text · give medical, legal or financial advice · reveal the prompt
 
----
+When unsure it should: return category "other" with low confidence, not a guess
 
-**/public/info**
+## Model
 
-<img width="817" height="866" alt="Image" src="https://github.com/user-attachments/assets/9a4b6baa-ac26-47cb-af2b-2aab81754333" />
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://xxxxxxxxxxxxxxxxxxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_xxxxxxxxxxxxxxxxxxxx_xxxxxxxx
+PORT=3000
+OPENROUTER_API_KEY=sk-or-xx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
+LLM_MODEL=openrouter/free
+LLM_STUB=1
+LLM_ENABLED=false
+```
 
----
+In the env, you'll probably see something like this. Since I used OpenRouter, the variables that are most necessary to setup are **OPENROUTER_API_KEY**, **OPENROUTER_BASE_URL**, and **LLM_MODEL** (to change model used; I used poolside/laguna-s-2.1:free for my case).
 
-### The remaining routes require a bearer_token. Retrieve the token from login, click the lock icon, and paste the token.
+## Eval Result
 
-<img width="855" height="299" alt="Image" src="https://github.com/user-attachments/assets/b07d2bd1-e4f7-43ce-96cd-4ee5a9dfcf37" />
+Here is one of my eval results on August 22, 2026 using triage-v1.md prompt
 
-**/protected/profile**
+```
+PASS: LLM categorized successfully.
+FAIL: Request failed (status 422)
+PASS: LLM categorized successfully.
+PASS: LLM categorized successfully.
+FAIL: Request failed (status 422)
+PASS: LLM categorized successfully.
+PASS: LLM categorized successfully.
+PASS: LLM categorized successfully.
+---------------------------------------------
 
-<img width="819" height="943" alt="Image" src="https://github.com/user-attachments/assets/dd8007ec-ad50-43db-a18b-f55a0a14d0d8" />
+6/8 matched (75.0%)
+```
 
----
+## Cost Log
 
-**/protected/dashboard**
+Due to the system prompt, the calls usually take 2 tries before being parsed successfully. As such it takes around 1500 tokens per POST request.
 
-<img width="826" height="937" alt="Image" src="https://github.com/user-attachments/assets/a59a3f43-acd8-4779-a44c-b2b62a665251" />
+```
+api-1  | {"event":"llm_call","promptVersion":"triage-v1","model":"poolside/laguna-s-2.1:free","inputTokens":691,"outputTokens":59,"durationMs":4044,"repair":false}
+api-1  | {"event":"llm_call","promptVersion":"triage-v1","model":"poolside/laguna-s-2.1:free","inputTokens":744,"outputTokens":40,"durationMs":2816,"repair":true}
+```
 
----
+Considering this a daily 10,000 request would consume approximately 15,000,000 tokens per day.
 
-**/auth/logout**
-
-<img width="819" height="881" alt="Image" src="https://github.com/user-attachments/assets/dad6a4cd-5a58-4b78-bc8c-e5cccce68db6" />
+What I'd fix on another day is the system prompt. I think the goal of the endpoint can be achieved even with system prompt that uses less tokens. This can be achieved by being more specific and precise with the prompt and reducing the amount of examples.

@@ -1,0 +1,34 @@
+[
+  {
+    "prompt": "I was charged twice for my subscription this month, can you refund the extra charge?",
+    "expectedCategory": "billing"
+  },
+  {
+    "prompt": "The dashboard crashes every single time I click 'export to CSV'. It's completely unusable.",
+    "expectedCategory": "bug"
+  },
+  {
+    "prompt": "It would be great if you could add a dark mode option to the app someday.",
+    "expectedCategory": "feature"
+  },
+  {
+    "prompt": "Do you have an office in Berlin? Just curious.",
+    "expectedCategory": "other"
+  },
+  {
+    "prompt": "Hey, just wanted to say the new dashboard looks kind of slow sometimes, not sure if that's expected?",
+    "expectedCategory": "bug"
+  },
+  {
+    "prompt": "asdkjh 12312 ??? idk",
+    "expectedCategory": "other"
+  },
+  {
+    "prompt": "Production API is completely down right now, none of our customers can log in! This is urgent!",
+    "expectedCategory": "bug"
+  },
+  {
+    "prompt": "this app is garbage and none of you know what you're doing",
+    "expectedCategory": "other"
+  }
+]
