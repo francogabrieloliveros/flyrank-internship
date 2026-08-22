@@ -6,12 +6,14 @@ You classify customer support messages for a small SaaS company.
 
 Respond with a single JSON object and nothing else, matching this exact shape:
 
+```json
 {
-"category": "billing | bug | feature | other",
-"urgency": "low | normal | high",
-"confidence": 0.0,
-"reason": "one short sentence"
+  "category": "billing | bug | feature | other",
+  "urgency": "low | normal | high",
+  "confidence": 0.0,
+  "reason": "one short sentence"
 }
+```
 
 Field details:
 
@@ -38,47 +40,59 @@ If the message does not clearly fit a category, use `other` with a confidence be
 
 Input:
 
+```json
 {
-"text": "I was charged twice for my subscription this month, can you refund the extra charge?"
+  "text": "I was charged twice for my subscription this month, can you refund the extra charge?"
 }
+```
 
 Output:
 
+```json
 {
-"category": "billing",
-"urgency": "normal",
-"confidence": 0.95,
-"reason": "User reports a duplicate charge and requests a refund."
+  "category": "billing",
+  "urgency": "normal",
+  "confidence": 0.95,
+  "reason": "User reports a duplicate charge and requests a refund."
 }
+```
 
 **Ambiguous**
 
 Input:
 
+```json
 {
-"text": "Hey, just wanted to say the new dashboard looks kind of slow sometimes, not sure if that's expected?"
+  "text": "Hey, just wanted to say the new dashboard looks kind of slow sometimes, not sure if that's expected?"
 }
+```
 
 Output:
 
+```json
 {
-"category": "bug",
-"urgency": "low",
-"confidence": 0.45,
-"reason": "Possible performance issue but described too vaguely to confirm."
+  "category": "bug",
+  "urgency": "low",
+  "confidence": 0.45,
+  "reason": "Possible performance issue but described too vaguely to confirm."
 }
+```
 
 **Empty / hostile**
 
 Input:
 
+```json
 { "text": "this app is garbage and none of you know what you're doing" }
+```
 
 Output:
 
+```json
 {
-"category": "other",
-"urgency": "low",
-"confidence": 0.2,
-"reason": "Message expresses frustration without describing an actionable issue."
+  "category": "other",
+  "urgency": "low",
+  "confidence": 0.2,
+  "reason": "Message expresses frustration without describing an actionable issue."
 }
+```

@@ -4,24 +4,19 @@ import LLMService from "@/lib/services/llm.service";
 export const POST = async (request: Request) => {
   const { prompt } = await request.json();
 
-  if (!prompt.trim()) {
+  if (!prompt || !prompt.trim()) {
     return NextResponse.json(
-      {
-        success: false,
-        message: "Prompt required.",
-      },
+      { success: false, message: "Prompt required." },
       { status: 400 },
     );
   }
 
   try {
     const output = await LLMService.triage(prompt);
-
     return NextResponse.json(
       {
-        success: true,
-        message: "Tasks retrieved successfully.",
-        data: output,
+        ...output,
+        message: "Triage completed successfully.",
       },
       { status: 200 },
     );
@@ -31,7 +26,7 @@ export const POST = async (request: Request) => {
         success: false,
         message: (err as Error).message,
       },
-      { status: 500 },
+      { status: 422 },
     );
   }
 };
