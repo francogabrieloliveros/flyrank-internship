@@ -2,6 +2,7 @@ import z from "zod";
 import { zodResponseFormat } from "openai/helpers/zod.js";
 import client from "../llm/client";
 import OutputSchema from "../llm/schema";
+import { readFileSync } from "node:fs";
 
 type Output = z.infer<typeof OutputSchema>;
 
@@ -25,7 +26,14 @@ class LLMService {
     try {
       const res = await client.chat.completions.create({
         model: process.env.LLM_MODEL!,
-        messages: [{ role: "user", content: prompt }],
+        messages: [
+          {
+            role: "system",
+            content: readFileSync("./src/lib/prompts/triage-v1.md", "utf-8"),
+          },
+          { role: "user", content: prompt },
+        ],
+        temperature: 0,
         response_format: zodResponseFormat(OutputSchema, "output"),
       });
 

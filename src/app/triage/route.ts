@@ -29,7 +29,7 @@ export const POST = async (request: Request) => {
     return NextResponse.json(
       {
         success: false,
-        message: "An error occured.",
+        message: (err as Error).message,
       },
       { status: 500 },
     );
