@@ -4,7 +4,7 @@
 
 ## Url
 
-[https://flyrank-internship-ugly-one.vercel.app/](https://flyrank-internship-kfqz.vercel.app/)
+https://flyrank-internship-kfqz.vercel.app/
 
 ## Fix Log
 
