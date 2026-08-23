@@ -1,23 +1,23 @@
-# Empty but Live: Ship a Blank Page
+# Open it On Your Phone
 
-## General AI Fluency - Week 4
+## General AI Fluency - Week 6
 
 ## Url
 
 https://flyrank-internship-ugly-one.vercel.app/
 
-## Reaction
+## Fix Log
 
-As stated by the person I asked, the website looks clean. It has a unified design philosophy and theme. The message is strong and you can easily tell the goal of the website. However, it looks AI generated as it lacks human touch. Everything looks so unified that you can't differentiate each section, especially the proof of work. For a portfolio website, preferably it should have multiple sections in one page since recruiters do not spend as much time clicking through lots of pages.
+| Before                                                                                                                             | After                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| <img width="302" height="594" alt="Image" src="https://github.com/user-attachments/assets/185dfcad-00f0-4cdc-aeb7-e5cc7547da7a" /> | <img width="305" height="600" alt="Image" src="https://github.com/user-attachments/assets/4eabc1d4-e5e8-424b-a9e0-90d553c6b164" /> |
 
-## Still Ugly
+| Before                                                                                                                             | After                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| <img width="300" height="595" alt="Image" src="https://github.com/user-attachments/assets/494a8c2f-2d94-4439-91b0-4e6109de1c04" /> | <img width="297" height="598" alt="Image" src="https://github.com/user-attachments/assets/c899032b-45fb-4e28-a405-b5462cc16da9" /> |
 
-- Wrong fonts used
-- Links not working
-- Not dynamic to mobile screens
-- Transparency effect making things hard to read
-- No project snapshots
-- Multipager
-- No recognizable icons on skills
-- Zero animations
-- Some text are hard to read
+### Additional Fixes
+
+- Resume URL
+- LinkedIn URL
+- Email

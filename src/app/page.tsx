@@ -24,7 +24,10 @@ export default function Home() {
           </p>
 
           <div className="mt-9">
-            <Button href="/contact" icon={<ArrowRightIcon className="h-4 w-4" />}>
+            <Button
+              href="/contact"
+              icon={<ArrowRightIcon className="h-4 w-4" />}
+            >
               Connect with me
             </Button>
           </div>
@@ -34,17 +37,19 @@ export default function Home() {
           <div className="rigid-frame relative mt-16 overflow-hidden bg-paper/60 p-1">
             <div
               aria-hidden="true"
-              className="grid h-56 w-full grid-cols-6 sm:h-72"
+              className="grid h-75 w-full grid-cols-6 sm:h-72"
             >
               {Array.from({ length: 24 }).map((_, i) => (
                 <div key={i} className="border border-ink/[0.06]" />
               ))}
             </div>
 
-            <div className="glass absolute -bottom-6 left-1/2 flex w-[92%] -translate-x-1/2 flex-col gap-6 rounded-[1.75rem] p-6 sm:bottom-6 sm:w-auto sm:flex-row sm:gap-10 sm:px-10 sm:py-7">
+            <div className="glass absolute bottom-5 left-1/2 flex w-[92%] -translate-x-1/2 flex-col gap-6 rounded-[1.75rem] p-6 sm:bottom-6 sm:w-auto sm:flex-row sm:gap-10 sm:px-10 sm:py-7">
               {leadProject.metrics?.map((m) => (
                 <div key={m.label}>
-                  <p className="font-display text-3xl text-ink sm:text-4xl">{m.value}</p>
+                  <p className="font-display text-3xl text-ink sm:text-4xl">
+                    {m.value}
+                  </p>
                   <p className="mt-0.5 text-xs uppercase tracking-[0.15em] text-ink/50">
                     {m.label}
                   </p>
@@ -60,8 +65,12 @@ export default function Home() {
       {/* ---------------------------------------------------------------- */}
       <section className="px-4 py-24 sm:px-6">
         <div className="mx-auto max-w-5xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-ink/45">Works snapshot</p>
-          <h2 className="font-display mt-3 text-3xl sm:text-4xl">The strongest proof</h2>
+          <p className="text-xs uppercase tracking-[0.3em] text-ink/45">
+            Works snapshot
+          </p>
+          <h2 className="font-display mt-3 text-3xl sm:text-4xl">
+            The strongest proof
+          </h2>
 
           <div className="rigid-frame mt-8 grid overflow-hidden bg-paper/70 md:grid-cols-2">
             <ProjectThumb title={leadProject.title} dark />
@@ -84,7 +93,11 @@ export default function Home() {
           </div>
 
           <div className="mt-10">
-            <Button href="/proof-of-work" variant="outline" icon={<ArrowRightIcon className="h-4 w-4" />}>
+            <Button
+              href="/proof-of-work"
+              variant="outline"
+              icon={<ArrowRightIcon className="h-4 w-4" />}
+            >
               See my projects
             </Button>
           </div>
