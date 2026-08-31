@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { site } from "@/lib/data";
+import { Calico } from "@/components/Calico";
 
 // Placeholder for "Florilst Realik" (not a licensed web font). Bodoni Moda is
 // a high-contrast didone serif in the same family of feeling — swap this for
@@ -41,6 +42,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <Calico />
       </body>
     </html>
   );
