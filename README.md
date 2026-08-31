@@ -4,6 +4,8 @@
 
 ## Url
 
+https://flyrank-internship-crit.vercel.app/
+
 ## Feedback
 
 From what I have seen from your proof statement and portfolio, I could surmise that you are in the field of Backend AI Engineering. Despite this, you did not specify what role level you are in/ applying for. Are you an intern, a junior-developer, or a senior-developer? Also, the claim and the hero is nicely proven by one of your projects, Draw Collab. However, the bold claim also requires bold amounts of supporting evidence. In the proof of work section, only the lead project defends the claim—I can only count the number of projects that actually have a backend and AI integrations. Lastly, if the proof of work is proof, it should be showcased by the most evident proof which are images. Each project should at least have a screenshot or a branding. Overall, aside from problems I have stated, the portfolio actually flows nicely per page. Although, some recruiters might not have the patience/time to look through each of these so I’d recommend a hero that contains the most important bit of every page or a one-pager site. Also, add your own image so the recruiters can know who you are.
