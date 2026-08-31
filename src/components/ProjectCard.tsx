@@ -5,7 +5,7 @@ import type { Project } from "@/lib/data";
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="rigid-frame group flex flex-col overflow-hidden bg-paper/70 transition-shadow hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,0.35)]">
-      <ProjectThumb title={project.title} />
+      <ProjectThumb image={project.image!} title={project.title} />
 
       <div className="flex flex-1 flex-col gap-3 p-6">
         <div>

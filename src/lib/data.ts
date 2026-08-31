@@ -6,7 +6,7 @@
 export const site = {
   name: "Franco Gabriel Oliveros",
   initials: "FO",
-  role: "Backend & AI Engineer",
+  role: "Backend & AI Engineer Intern",
   claim:
     "I build concurrent backend systems and AI-powered pipelines that stay stable under load.",
   proof:
@@ -38,6 +38,7 @@ export type Project = {
   website?: string;
   metrics?: { label: string; value: string }[];
   note?: string;
+  image?: string;
 };
 
 // Lead case study — kept separate so the Proof of Work page can give it full
@@ -64,6 +65,7 @@ export const leadProject: Project = {
     { label: "State loss on join", value: "Zero" },
   ],
   note: "Server has a ~1 minute cold start on the free tier — give it a moment on first load.",
+  image: "/draw.png",
 };
 
 export const secondaryProjects: Project[] = [
@@ -83,6 +85,7 @@ export const secondaryProjects: Project[] = [
     ],
     github: "https://github.com/francogabrieloliveros/farm-to-table.git",
     website: "https://farm-to-table-omega.vercel.app/",
+    image: "/farmtotable.png",
   },
   {
     slug: "chef-bot",
@@ -92,6 +95,7 @@ export const secondaryProjects: Project[] = [
     tags: ["JavaScript", "React", "Mistral AI", "Vite"],
     github: "https://github.com/francogabrieloliveros/chef_bot.git",
     website: "https://chef-bot-three.vercel.app/",
+    image: "/chef.png",
   },
   {
     slug: "palayok",
@@ -102,6 +106,7 @@ export const secondaryProjects: Project[] = [
     github: "https://github.com/francogabrieloliveros/palayok.git",
     website:
       "https://drive.google.com/file/d/1vRMZ6n-WfOYVfO38s8PwoGG8_dqV3tdp/view?usp=sharing",
+    image: "/palayok.png",
   },
   {
     slug: "aerio-katharos",
@@ -112,6 +117,7 @@ export const secondaryProjects: Project[] = [
     github:
       "https://github.com/francogabrieloliveros/greenvale-pollutant-reduction-project",
     website: "https://greenvale-pollutant-reduction-proje.vercel.app/",
+    image: "/aerio.png",
   },
   {
     slug: "hugot-hanay",
@@ -121,6 +127,7 @@ export const secondaryProjects: Project[] = [
     tags: ["JavaScript", "React", "Tailwind CSS", "Vite"],
     github: "https://github.com/francogabrieloliveros/hugot-hanay.git",
     website: "https://hugot-hanay.vercel.app/",
+    image: "/hugot.png",
   },
   {
     slug: "gloflex",
@@ -129,6 +136,7 @@ export const secondaryProjects: Project[] = [
     desc: "An assistive technology device designed to bridge communication barriers between deaf or mute individuals and the wider community, converting predefined sign language gestures into audible speech.",
     tags: ["Arduino", "C"],
     github: "https://github.com/francogabrieloliveros/gloflex.git",
+    image: "/gloflex.png",
   },
   {
     slug: "hospital-logbook",
@@ -138,6 +146,7 @@ export const secondaryProjects: Project[] = [
     desc: "Manages hospital operations with an intuitive UI to record staff, patients, lab exams, and lab requests, while automatically logging every action. Includes a dashboard summarizing all data held by the system.",
     tags: ["Java", "JavaFX", "CSS"],
     github: "https://github.com/francogabrieloliveros/CMSC22_FINAL_PROJECT.git",
+    image: "/hospital.png",
   },
   {
     slug: "weather-program",
@@ -147,6 +156,7 @@ export const secondaryProjects: Project[] = [
     tags: ["JavaScript", "HTML", "CSS"],
     github: "https://github.com/francogabrieloliveros/weather_program.git",
     website: "https://weather-program-steel.vercel.app/",
+    image: "/weather.png",
   },
 ];
 

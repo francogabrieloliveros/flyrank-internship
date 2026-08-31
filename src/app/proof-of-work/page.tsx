@@ -14,7 +14,9 @@ export default function ProofOfWork() {
     <>
       <section className="px-4 pb-10 pt-36 sm:px-6 sm:pt-44">
         <div className="mx-auto max-w-5xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-ink/45">Proof of Work</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-ink/45">
+            Proof of Work
+          </p>
           <h1 className="font-display mt-3 max-w-2xl text-4xl sm:text-5xl">
             Built to hold up under real traffic.
           </h1>
@@ -29,8 +31,12 @@ export default function ProofOfWork() {
 
       <section className="px-4 pb-24 sm:px-6">
         <div className="mx-auto max-w-5xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-ink/45">More projects</p>
-          <h2 className="font-display mt-3 text-3xl sm:text-4xl">Secondary cases</h2>
+          <p className="text-xs uppercase tracking-[0.3em] text-ink/45">
+            More projects
+          </p>
+          <h2 className="font-display mt-3 text-3xl sm:text-4xl">
+            Secondary cases
+          </h2>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {secondaryProjects.map((project) => (
@@ -42,8 +48,12 @@ export default function ProofOfWork() {
 
       <section className="px-4 pb-24 sm:px-6">
         <div className="mx-auto max-w-5xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-ink/45">Skills</p>
-          <h2 className="font-display mt-3 text-3xl sm:text-4xl">What&apos;s underneath</h2>
+          <p className="text-xs uppercase tracking-[0.3em] text-ink/45">
+            Skills
+          </p>
+          <h2 className="font-display mt-3 text-3xl sm:text-4xl">
+            What&apos;s underneath
+          </h2>
           <div className="mt-8">
             <SkillsGrid />
           </div>

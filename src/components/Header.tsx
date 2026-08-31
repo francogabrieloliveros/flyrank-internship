@@ -15,7 +15,7 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-6">
       <div className="relative mx-auto max-w-6xl">
         {/* Liquid glass surface + morphing teal blob (the signature element) */}
-        <div className="backdrop-blur-[3px] shadow-lg border border-[rgba(255,255,255,0.5)] relative overflow-hidden rounded-4xl px-4 py-2.5 sm:px-6">
+        <div className="backdrop-blur-[3px] shadow-lg border border-[rgba(255,255,255,0.5)] relative overflow-hidden rounded-4xl px-4 py-2.5 sm:px-6 bg-white/40">
           <span
             aria-hidden="true"
             className="liquid-blob pointer-events-none absolute -left-8 -top-10 h-32 w-32 bg-teal/45 sm:h-36 sm:w-36"
@@ -48,7 +48,7 @@ export function Header() {
                     className={`rounded-full px-4 py-2 text-sm transition-colors ${
                       active
                         ? "bg-ink text-mist"
-                        : "text-ink/70 hover:bg-paper/60 hover:text-ink"
+                        : "text-gray-800 hover:bg-paper/60 hover:text-ink"
                     }`}
                   >
                     {item.label}
@@ -82,7 +82,7 @@ export function Header() {
 
         {/* Mobile menu */}
         {open && (
-          <div className="backdrop-blur-[3px] shadow-lg border border-[rgba(255,255,255,0.5)] relative mt-2 overflow-hidden rounded-[1.75rem] p-3 md:hidden">
+          <div className="backdrop-blur-[3px] shadow-lg border border-[rgba(255,255,255,0.5)] relative mt-2 overflow-hidden rounded-[1.75rem] p-3 md:hidden bg-white/40">
             <nav className="flex flex-col gap-1">
               {nav.map((item) => {
                 const active = pathname === item.href;

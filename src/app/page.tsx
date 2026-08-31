@@ -73,7 +73,10 @@ export default function Home() {
           </h2>
 
           <div className="rigid-frame mt-8 grid overflow-hidden bg-paper/70 md:grid-cols-2">
-            <ProjectThumb title={leadProject.title} dark />
+            <ProjectThumb
+              title={leadProject.title}
+              image={leadProject.image!}
+            />
             <div className="flex flex-col justify-center gap-4 p-8 sm:p-10">
               <h3 className="font-display text-2xl">{leadProject.title}</h3>
               <p className="text-sm font-light leading-relaxed text-ink/65">
