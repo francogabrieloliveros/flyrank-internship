@@ -1,7 +1,7 @@
 export type Report = {
   id: string;
   topic: string;
-  status: "pending" | "done";
+  status: "pending" | "done" | "failed";
   result?: string;
 };
 
