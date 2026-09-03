@@ -11,11 +11,18 @@ interface RatingCountRow {
   count: number;
 }
 
-interface ReportData {
+interface AllBooksRow {
+  title: string;
+  price: number;
+  rating: number | null;
+}
+
+export interface ReportData {
   totalBooks: number;
   averagePrice: number;
   topExpensive: BookPriceRow[];
   booksPerRating: RatingCountRow[];
+  allBooks: AllBooksRow[];
 }
 
 const getReportData = (): ReportData => {
@@ -41,11 +48,18 @@ const getReportData = (): ReportData => {
     )
     .all();
 
+  const allBooks = db
+    .prepare<[], AllBooksRow>(
+      "SELECT title, price, rating FROM books ORDER BY title",
+    )
+    .all();
+
   return {
     totalBooks,
     averagePrice,
     topExpensive,
     booksPerRating,
+    allBooks,
   };
 };
 

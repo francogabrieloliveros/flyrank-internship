@@ -1,5 +1,6 @@
 import express, { type Express } from "express";
 import healthRoute from "@/routes/health.route";
+import reportRoute from "@/routes/report.route";
 
 const app: Express = express();
 
@@ -8,5 +9,6 @@ app.use(express.json());
 
 // Routes
 app.use("/health", healthRoute);
+app.use("/reports", reportRoute);
 
 export default app;
