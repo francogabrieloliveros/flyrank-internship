@@ -6,6 +6,7 @@ const app: Express = express();
 
 // Middlewares
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/health", healthRoute);

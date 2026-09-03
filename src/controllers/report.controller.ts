@@ -13,6 +13,27 @@ interface ReportRow {
 
 export const generateReport = (req: Request, res: Response) => {
   try {
+    const force = req.body?.force === true;
+
+    // Check first if report generated today
+    if (!force) {
+      const existing = db
+        .prepare<[], { id: number; path: string }>(
+          `SELECT id, path FROM reports
+              WHERE date(created_at) = date('now')
+              ORDER BY id DESC
+              LIMIT 1`,
+        )
+        .get();
+
+      if (existing) {
+        return res.status(200).json({
+          id: existing.id,
+          file: `/reports/${existing.id}/file`,
+        });
+      }
+    }
+
     // Make temp row
     const insert = db.prepare("INSERT INTO reports (path) VALUES (?)");
     const info = insert.run("");
