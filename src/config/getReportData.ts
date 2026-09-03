@@ -1,0 +1,52 @@
+import Database from "better-sqlite3";
+import db from "@/config/seed";
+
+interface BookPriceRow {
+  title: string;
+  price: number;
+}
+
+interface RatingCountRow {
+  rating: number | null;
+  count: number;
+}
+
+interface ReportData {
+  totalBooks: number;
+  averagePrice: number;
+  topExpensive: BookPriceRow[];
+  booksPerRating: RatingCountRow[];
+}
+
+const getReportData = (): ReportData => {
+  const totalBooks = db
+    .prepare<[], { count: number }>("SELECT COUNT(*) AS count FROM books")
+    .get()!.count;
+
+  const averagePrice = db
+    .prepare<[], { avg: number }>(
+      "SELECT ROUND(AVG(price), 2) AS avg FROM books",
+    )
+    .get()!.avg;
+
+  const topExpensive = db
+    .prepare<[], BookPriceRow>(
+      "SELECT title, price FROM books ORDER BY price DESC LIMIT 5",
+    )
+    .all();
+
+  const booksPerRating = db
+    .prepare<[], RatingCountRow>(
+      "SELECT rating, COUNT(*) AS count FROM books GROUP BY rating ORDER BY rating",
+    )
+    .all();
+
+  return {
+    totalBooks,
+    averagePrice,
+    topExpensive,
+    booksPerRating,
+  };
+};
+
+export default getReportData;
