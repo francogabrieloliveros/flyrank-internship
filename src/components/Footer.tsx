@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/icons";
 import { nav, site } from "@/lib/data";
+import { FlyrankBadge } from "./FlyrankBadge";
 
 export function Footer() {
   return (
@@ -8,18 +9,24 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-14 sm:px-10">
         <div className="grid gap-10 sm:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <p className="font-display text-2xl">Franco Oliveros</p>
+            <FlyrankBadge />
+            <p className="font-display text-2xl">Franco Gabriel P. Oliveros</p>
             <p className="mt-3 max-w-sm text-sm font-light text-mist/70">
               {site.claim}
             </p>
           </div>
 
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-mist/50">Navigate</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-mist/50">
+              Navigate
+            </p>
             <ul className="mt-4 space-y-2 text-sm">
               {nav.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-mist/80 transition-colors hover:text-teal">
+                  <Link
+                    href={item.href}
+                    className="text-mist/80 transition-colors hover:text-teal"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -28,7 +35,9 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-mist/50">Elsewhere</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-mist/50">
+              Elsewhere
+            </p>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
                 <a
@@ -63,7 +72,10 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-mist/15 pt-6 text-xs text-mist/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Franco Gabriel Oliveros. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Franco Gabriel Oliveros. All rights
+            reserved.
+          </p>
           <p>{site.location}</p>
         </div>
       </div>
